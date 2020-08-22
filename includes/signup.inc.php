@@ -70,7 +70,7 @@ if(isset($_POST['signup-submit'])) {
                     $_SESSION["loggedin"] = true;
                     $_SESSION["id"] = $id;
                     $_SESSION["username"] = $username; 
-                    header("Location: ../starter.php?error=success"); 
+                    header("Location: ../index.php?error=success"); 
                     exit();
                 }
             }

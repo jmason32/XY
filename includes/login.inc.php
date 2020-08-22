@@ -44,7 +44,6 @@ if(isset($_POST['login-submit']) )
         else 
         {
             mysqli_stmt_bind_param($stmt, 'ss', $username, $username);
-
             if (mysqli_stmt_execute($stmt))
             {
                 // Store Result
@@ -63,7 +62,7 @@ if(isset($_POST['login-submit']) )
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username; 
-                            header("Location: ../starter.php?error=success"); 
+                            header("Location: ../index.php?error=success"); 
                             
                         }
                         // Worng password
