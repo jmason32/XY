@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 if(isset($_POST['signup-submit'])) {
     require 'dbh.inc.php';
 
@@ -66,12 +66,11 @@ if(isset($_POST['signup-submit'])) {
                     $hasedpwd = $pw;
                     mysqli_stmt_bind_param($stmt, 'sss', $username, $hasedpwd, $email);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../starter.php?signup=success");
-
                     //Query user id and save in session
-                    start_session();
-                    $_SESSION['userid'] = mysqli_insert_id($mysqli);
-                    $_SESSION['username'] = $username;
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["id"] = $id;
+                    $_SESSION["username"] = $username; 
+                    header("Location: ../starter.php?error=success"); 
                     exit();
                 }
             }
@@ -88,8 +87,6 @@ else {
     header("Location: ../signup.php");
     exit();
 }
-
-
 
 
 

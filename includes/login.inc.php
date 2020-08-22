@@ -64,7 +64,7 @@ if(isset($_POST['login-submit']) )
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username; 
                             header("Location: ../starter.php?error=success"); 
-                            echo $_SESSION['id']; 
+                            
                         }
                         // Worng password
                         else 
