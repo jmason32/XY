@@ -1,7 +1,6 @@
 <?php 
 
-
-if(isset($_POST['login-submit'])) {
+if(isset($_POST['login-submit']) ) {
 
     require 'dbh.inc.php';
 
@@ -20,7 +19,7 @@ if(isset($_POST['login-submit'])) {
     }
 
     else {
-
+        
         $sql = "SELECT * FROM users WHERE username=? OR email=?"; //use the ? as a placeholder 
         $stmt = mysqli_stmt_init($mysqli);
         
@@ -34,17 +33,19 @@ if(isset($_POST['login-submit'])) {
             mysqli_stmt_execute($stmt);
             $resultCheck = mysqli_stmt_get_result($stmt);
             // User Take
-            if ($row = mysqli_fetch_assoc()) {
-                $pwdCheck = password_verify($password, $row['pwd']);
-                if ($pwdCheck == false){
+            if ($row = mysqli_fetch_assoc($resultCheck)) {
+                $hash = substr( $row['pwd'], 0, 60 );
+                // $pwdCheck = password_verify($password, $hash);
+                
+                if ($password == $row['pwd']){
                     header("Location: ../login.php?error=wrongpwd");
                     exit();
                 }
-                else if ($pwdCheck == true){
+                else {
                     session_start();
                     $_SESSION['userid'] = $row['idusers'];
                     $_SESSION['username'] = $row['username'];
-                    header("Location: ../login.php?error=success");
+                    header("Location: ../starter.php?error=success");
                 }
                 
             }
@@ -56,10 +57,10 @@ if(isset($_POST['login-submit'])) {
     mysqli_close($mysqli);
 
 }
-else {
-    header("Location: ../login.php");
-    exit();
-}
+// else {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
 
 

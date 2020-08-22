@@ -62,11 +62,16 @@ if(isset($_POST['signup-submit'])) {
                 }
                 else {
                     // Change MYSQL Data to be 'TEXT'
-                    $hasedpwd = password_hash($pw, PASSWORD_DEFAULT);
-
+                    //$hasedpwd = password_hash($pw, PASSWORD_DEFAULT);
+                    $hasedpwd = $pw;
                     mysqli_stmt_bind_param($stmt, 'sss', $username, $hasedpwd, $email);
                     mysqli_stmt_execute($stmt);
                     header("Location: ../starter.php?signup=success");
+
+                    //Query user id and save in session
+                    start_session();
+                    $_SESSION['userid'] = mysqli_insert_id($mysqli);
+                    $_SESSION['username'] = $username;
                     exit();
                 }
             }
