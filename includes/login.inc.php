@@ -1,6 +1,16 @@
 <?php 
+session_start();
+function debug_to_console($data) 
+{
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
 
-if(isset($_POST['login-submit']) ) {
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
+
+if(isset($_POST['login-submit']) ) 
+{
 
     require 'dbh.inc.php';
 
@@ -8,60 +18,80 @@ if(isset($_POST['login-submit']) ) {
     $pw = $_POST['password'];
 
     // Error Handling : empty fields
-    if (empty($username) || empty($pw)) {
+    if (empty($username) || empty($pw)) 
+    {
         header("Location: ../login.php?error=emptyfields&username=".$username);
         exit();
     }
     // Vaild Username
-    else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+    else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) 
+    {
         header("Location: ../login.php?error=invalidmail&email=".$email);
         exit();
     }
-
-    else {
+    // Validate Credientials
+    else 
+    {
         
-        $sql = "SELECT * FROM users WHERE username=? OR email=?"; //use the ? as a placeholder 
+        $sql = "SELECT idusers, username, pwd FROM users WHERE username=? OR email=?"; //use the ? as a placeholder 
         $stmt = mysqli_stmt_init($mysqli);
-        
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
+        if (!mysqli_stmt_prepare($stmt, $sql)) 
+        {
             header("Location: ../login.php?error=sqlerror1");
             exit();
         }
 
-        else {
+        else 
+        {
             mysqli_stmt_bind_param($stmt, 'ss', $username, $username);
-            mysqli_stmt_execute($stmt);
-            $resultCheck = mysqli_stmt_get_result($stmt);
-            // User Take
-            if ($row = mysqli_fetch_assoc($resultCheck)) {
-                $hash = substr( $row['pwd'], 0, 60 );
-                // $pwdCheck = password_verify($password, $hash);
-                
-                if ($password == $row['pwd']){
-                    header("Location: ../login.php?error=wrongpwd");
+
+            if (mysqli_stmt_execute($stmt))
+            {
+                // Store Result
+                mysqli_stmt_store_result($stmt);
+                // Verify User
+                if (mysqli_stmt_num_rows($stmt) == 1)
+                {
+                    // TODO::  Figure out HASH PASSWORD VERIFY
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt))
+                    {
+                        //vERIFY pASSWORD hERER
+                        if ($pw == $hashed_password)
+                        {
+
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username; 
+                            header("Location: ../starter.php?error=success"); 
+                            echo $_SESSION['id']; 
+                        }
+                        // Worng password
+                        else 
+                        {
+                            header("Location: ../starter.php?error=wrongpwd".$pwd);
+                        }   
+                    }
+                    
+                }
+                // No valid user
+                else 
+                {
+                    header("Location: ../login.php?error=sqlerrror1");
                     exit();
                 }
-                else {
-                    session_start();
-                    $_SESSION['userid'] = $row['idusers'];
-                    $_SESSION['username'] = $row['username'];
-                    header("Location: ../starter.php?error=success");
-                }
-                
             }
-            
+            else 
+            {
+                header("Location: ../login.php?error=wrongsome");
+                exit();
+            }
+            mysqli_stmt_close($stmt);
         }
+
+        mysqli_close($mysqli);
+
     }
 
-    mysqli_stmt_close($stmt);
-    mysqli_close($mysqli);
-
 }
-// else {
-//     header("Location: ../login.php");
-//     exit();
-// }
-
-
-
 ?>
