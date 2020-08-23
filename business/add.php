@@ -1,6 +1,7 @@
 <?php 
     session_start();
     require '../header.php';
+    require '../includes/dbh.inc.php';
     if (!$_SESSION['id']) {
         header("Location: signup.php");
         exit();
@@ -24,20 +25,42 @@
             </div>
             <div class="decoration decoration-margins top-30"></div>
             <div class="content">
-                <!-- <div class="select-box select-box-1">
+                <div class="input-simple-1 has-icon input-green bottom-30"><strong>Required Field</strong><em class="color-highlight">Buesiness Name</em><i class="fa fa-user"></i><input type="text" placeholder="Jonh Doe"></div>
+                <div class="input-simple-1 has-icon input-blue bottom-30"><strong>Required Field</strong><em class="color-highlight">Address</em><i class="fa fa-envelope"></i><input type="text" placeholder="mail@domain.com"></div>				
+                <!-- Create a table in the database to populate the selection choices (business_category) -->
+                <div class="select-box select-box-1">
                     <strong>Required Field</strong>
                     <em class="color-highlight">Select an Option</em>
-                    <select>
-                        <option value="volvo">Mobile Operating System</option>
-                        <option value="saab">iOS</option>
-                        <option value="mercedes">Android</option>
-                        <option value="audi">Windows Mobile</option>
-                    </select>
-                </div> -->
+                    <select>   
+                        <!-- If user chooses other, give the option to input the Catergory  -->
+                        <?php
+                        
+                            $sql = "SELECT idbusiness_category, business_category_name FROM business_category";
+                            $stmt = mysqli_stmt_init($mysqli);
 
-                <div class="input-simple-1 has-icon input-green bottom-30"><strong>Required Field</strong><em class="color-highlight">Buesiness Name</em><i class="fa fa-user"></i><input type="text" placeholder="Jonh Doe"></div>
-                <div class="input-simple-1 has-icon input-blue bottom-30"><strong>Required Field</strong><em class="color-highlight">Email</em><i class="fa fa-envelope"></i><input type="text" placeholder="mail@domain.com"></div>				
-                <div class="input-simple-1 has-icon input-red bottom-30"><strong>Required Field</strong><em class="color-highlight">Password</em><i class="fa fa-lock"></i><input type="password" placeholder="Enter your password"></div>
+                            if (!mysqli_stmt_prepare($stmt, $sql)) 
+                            {
+                                header("Location: ../add.php?error=nocategories");
+                                exit();
+                            }
+                            else 
+                            {
+                                
+                                if (mysqli_stmt_execute($stmt)) {
+
+                                    mysqli_stmt_bind_result($stmt, $id_cat, $name_cat); // Must do this
+                                    while (mysqli_stmt_fetch($stmt)) {
+                                        echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
+                                    }
+                                }
+
+                            }
+                        
+                        ?>
+                
+                    </select>
+                </div>
+                
                 <div class="input-simple-1 textarea has-icon bottom-30"><strong>Required Field</strong><i class="fa fa-edit"></i><em class="color-highlight">Description</em> <textarea class="textarea-simple-1" placeholder="Expanding Text Area"></textarea></div>
                 <div class="clear"></div>
             </div>
