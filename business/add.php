@@ -26,7 +26,7 @@
             <div class="decoration decoration-margins top-30"></div>
             <div class="content">
                 
-                <form action='../includes/business_add.php' method='POST'>
+                <form action='../includes/business.php' method='POST'>
                     <div class="input-simple-1 has-icon input-green bottom-30"><strong>Required Field</strong><em class="color-highlight">Business Name</em><i class="fa fa-user"></i><input name='business_name' type="text" placeholder="Jonh Doe"></div>
                     <div class="input-simple-1 has-icon input-blue bottom-30"><strong>Required Field</strong><em class="color-highlight">Address</em><i class="fa fa-envelope"></i><input name='business_address' type="text" placeholder="mail@domain.com"></div>				
                     <!-- Create a table in the database to populate the selection choices (business_category) -->
