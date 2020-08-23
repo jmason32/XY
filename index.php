@@ -40,18 +40,7 @@
 
                     <div class="decoration"></div>
 
-                    <div class="profile-gallery bottom-30">
-                        <a class="show-gallery" href="images/pictures/1t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/1s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/2t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/2s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/3t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/3s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/4t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/4s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/5t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/5s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/6t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/6s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/7t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/7s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/8t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/8s.jpg"></a>
-                        <a class="show-gallery" href="images/pictures/9t.jpg" alt="img"><img class="preload-image responsive-image rounded-image shadow-medium" src="images/empty.png" data-src="images/pictures/9s.jpg"></a>
-                        <div class="clear"></div>
-                    </div>
+                    
                 </div>
             </div>  
             
