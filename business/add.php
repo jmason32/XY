@@ -25,43 +25,41 @@
             </div>
             <div class="decoration decoration-margins top-30"></div>
             <div class="content">
-                <div class="input-simple-1 has-icon input-green bottom-30"><strong>Required Field</strong><em class="color-highlight">Buesiness Name</em><i class="fa fa-user"></i><input type="text" placeholder="Jonh Doe"></div>
-                <div class="input-simple-1 has-icon input-blue bottom-30"><strong>Required Field</strong><em class="color-highlight">Address</em><i class="fa fa-envelope"></i><input type="text" placeholder="mail@domain.com"></div>				
-                <!-- Create a table in the database to populate the selection choices (business_category) -->
-                <div class="select-box select-box-1">
-                    <strong>Required Field</strong>
-                    <em class="color-highlight">Select an Option</em>
-                    <select>   
-                        <!-- If user chooses other, give the option to input the Catergory  -->
-                        <?php
-                        
-                            $sql = "SELECT idbusiness_category, business_category_name FROM business_category";
-                            $stmt = mysqli_stmt_init($mysqli);
+                
+                <form action='../includes/business_add.php' method='POST'>
+                    <div class="input-simple-1 has-icon input-green bottom-30"><strong>Required Field</strong><em class="color-highlight">Business Name</em><i class="fa fa-user"></i><input name='business_name' type="text" placeholder="Jonh Doe"></div>
+                    <div class="input-simple-1 has-icon input-blue bottom-30"><strong>Required Field</strong><em class="color-highlight">Address</em><i class="fa fa-envelope"></i><input name='business_address' type="text" placeholder="mail@domain.com"></div>				
+                    <!-- Create a table in the database to populate the selection choices (business_category) -->
+                    <div class="select-box select-box-1">
+                        <strong>Required Field</strong>
+                        <em class="color-highlight">Select an Option</em>
+                        <select name='business_category'>   
+                            <!-- If user chooses other, give the option to input the Catergory  -->
+                            <?php
+                                $sql = "SELECT idbusiness_category, business_category_name FROM business_category";
+                                $stmt = mysqli_stmt_init($mysqli);
 
-                            if (!mysqli_stmt_prepare($stmt, $sql)) 
-                            {
-                                header("Location: ../add.php?error=nocategories");
-                                exit();
-                            }
-                            else 
-                            {
-                                
-                                if (mysqli_stmt_execute($stmt)) {
+                                if (!mysqli_stmt_prepare($stmt, $sql)) 
+                                {
+                                    header("Location: ../add.php?error=nocategories");
+                                    exit();
+                                }
+                                else 
+                                {  
+                                    if (mysqli_stmt_execute($stmt)) {
 
-                                    mysqli_stmt_bind_result($stmt, $id_cat, $name_cat); // Must do this
-                                    while (mysqli_stmt_fetch($stmt)) {
-                                        echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
+                                        mysqli_stmt_bind_result($stmt, $id_cat, $name_cat); // Must do this
+                                        while (mysqli_stmt_fetch($stmt)) {
+                                            echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
+                                        }
                                     }
                                 }
-
-                            }
-                        
-                        ?>
-                
-                    </select>
-                </div>
-                
-                <div class="input-simple-1 textarea has-icon bottom-30"><strong>Required Field</strong><i class="fa fa-edit"></i><em class="color-highlight">Description</em> <textarea class="textarea-simple-1" placeholder="Expanding Text Area"></textarea></div>
+                            ?>
+                        </select>
+                    </div>
+                    
+                    <div class="input-simple-1 textarea has-icon bottom-30"><strong>Required Field</strong><i class="fa fa-edit"></i><em class="color-highlight">Description</em> <textarea name='business_description' class="textarea-simple-1" placeholder="Expanding Text Area"></textarea></div>
+                </form>
                 <div class="clear"></div>
             </div>
 
