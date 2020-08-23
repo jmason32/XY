@@ -55,6 +55,8 @@
                         <div class="clear"></div>
                     </div>
 
+                    <a href="business/add.php" class="button shadow-medium button-rounded button-blue2-3d button-blue2">Add Business</a>
+
                     <div class="decoration"></div>
 
                     <div class="profile-gallery bottom-30">
