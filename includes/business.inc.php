@@ -20,27 +20,33 @@
             exit();
         }
         else {
-            // Create an sql statement that will insert the form data 
-            $sql = "INSERT INTO business (idusers, business_name, business_email, business_address, business_description) VALUES (?, ?, ?, ?, ?)"; //use the ? as a placeholder 
+
+            $sql = "INSERT INTO business (idusers, business_name, business_address, business_email, business_description) VALUES (?, ?, ?, ?, ?)"; //use the ? as a placeholder 
             $stmt = mysqli_stmt_init($mysqli);
-            
+
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("Location: ../business/add.php?error=sqlerror1");
                 exit();
             }
             else {
-                mysqli_stmt_bind_param($stmt, 'issss', $_SESSION['id'], $business_name, $business_email, $business_address, $business_desc);
-                mysqli_stmt_execute($stmt);
-                header("Location: ../index.php?error=success_business"); 
-                exit();
+                mysqli_stmt_bind_param($stmt, 'issss', $_SESSION['id'], $business_name, $business_address, $business_email, $business_desc);
+                
+                if (mysqli_stmt_execute($stmt)){
+                    header("Location: ../index.php?error=success_business"); 
+                    exit();
+                }
+                else {
+                    header("Location: ../business/add.php?error=sqlerror2");
+                    exit();
+                }   
+
             }
-    
         }
+         
         mysqli_stmt_close($stmt);
         mysqli_close($mysqli);
-
     }
-    else if (isset($_POST['edit_business'])){
+        else if (isset($_POST['edit_business'])){
         if(!$_SESSION['businessID']){
             header("Location: ../business/add.php?error=nobusinessID");
             exit();
