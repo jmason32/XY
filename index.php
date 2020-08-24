@@ -40,6 +40,33 @@
 
                     <div class="decoration"></div>
 
+                    <!-- Add a table to hold the businesses -->
+                    <table class="table-borders-light shadow-small">
+                        <tbody>
+                            <tr>
+                                <th class="bg-highlight color-white col-8">Brand</th>
+        
+                            </tr>
+                            <tr>
+                                <td class="bg-highlight">Apple</td>
+                                <td>iPhone</td>
+                                <td>iOS</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-highlight">Android</td>
+                                <td>Pixel</td>
+                                <td>Android</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-highlight">Nope</td>
+                                <td>Nope</td>
+                                <td>nOS</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     
                 </div>
             </div>  
