@@ -5,7 +5,8 @@
     // Add Business
     if (isset($_POST['new_business_submit'])){
         /* TODO
-            - add business_email, with vaildiation (from signup.php) */
+            - add business_email, with vaildiation (from signup.php) 
+            - get the option value from the category selection for the database*/
 
         $business_name = $_POST['business_name'];
         $business_address = $_POST['business_address'];

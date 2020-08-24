@@ -40,7 +40,11 @@
 
                     <div class="decoration"></div>
 
-                    <!-- Add a table to hold the businesses -->
+                    <!-- Add a table to hold the businesses 
+                    TODO: 
+                        - List all the businesses this user has made 
+                        - Add a edit/delete button to the listing 
+                    -->
                     <table class="table-borders-light shadow-small">
                         <tbody>
                             <tr>
