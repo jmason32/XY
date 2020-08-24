@@ -1,10 +1,10 @@
 <?php 
-    session_start();
+    // session_start();
     require 'header.php';
-    if (!$_SESSION['id']) {
-        header("Location: signup.php");
-        exit();
-    }
+    // if (!$_SESSION['id']) {
+    //     header("Location: signup.php");
+    //     exit();
+    // }
     
 ?>
 
@@ -24,7 +24,7 @@
                 <div class="profile-header-clear"></div>
                 <div class="profile-body">
                     <a href="#" class="profile-button button shadow-large button-s button-round uppercase bolder bg-highlight button-center">Follow</a>
-                    <h1 class="profile-heading bolder"><?php echo $_SESSION['username'];?></h1>
+                    <h1 class="profile-heading bolder"><?php echo 'DB NOT READY'?></h1>
                     <h2 class="profile-sub-heading bottom-20 color-blue-dark">Model for PixaBay</h2>
                     <p class="center-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit dolor eu arcu sollicitudin, quis maximus mi vehicula.
