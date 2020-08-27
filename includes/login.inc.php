@@ -1,4 +1,5 @@
 <?php 
+session_start();
 header("Access-Control-Allow-Origin: *");
 function debug_to_console($data) 
 {
