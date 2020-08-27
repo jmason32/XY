@@ -34,7 +34,8 @@
                         <strong>Required Field</strong>
                         <em class="color-highlight">Select an Option</em>
                         <select name='business_category'>   
-                            <!-- If user chooses other, give the option to input the Catergory  -->
+                            <!-- If user chooses other, give the option to input the Catergory  
+                                TODO: Create (business_category) table in database-->
                             <?php
                                 $sql = "SELECT idbusiness_category, business_category_name FROM business_category";
                                 $stmt = mysqli_stmt_init($mysqli);
