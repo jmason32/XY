@@ -35,7 +35,7 @@
                         </div>
                         <button type='submit' name='login-submit' class="button bg-highlight button-full button-rounded button-s uppercase ultrabold shadow-medium">LOGIN</button>
                     </form>
-                    <a  class="button bg-highlight button-full button-s uppercase ultrabold shadow-medium" href='index.php'> Go to next Page </a>
+                    
                 </div>
 
                 </div>
