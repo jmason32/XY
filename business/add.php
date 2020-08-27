@@ -36,24 +36,24 @@
                         <select name='business_category'>   
                             <!-- If user chooses other, give the option to input the Catergory  -->
                             <?php
-                                // $sql = "SELECT idbusiness_category, business_category_name FROM business_category";
-                                // $stmt = mysqli_stmt_init($mysqli);
+                                $sql = "SELECT idbusiness_category, business_category_name FROM business_category";
+                                $stmt = mysqli_stmt_init($mysqli);
 
-                                // if (!mysqli_stmt_prepare($stmt, $sql)) 
-                                // {
-                                //     header("Location: ../add.php?error=nocategories");
-                                //     exit();
-                                // }
-                                // else 
-                                // {  
-                                //     if (mysqli_stmt_execute($stmt)) {
+                                if (!mysqli_stmt_prepare($stmt, $sql)) 
+                                {
+                                    header("Location: ../add.php?error=nocategories");
+                                    exit();
+                                }
+                                else 
+                                {  
+                                    if (mysqli_stmt_execute($stmt)) {
 
-                                //         mysqli_stmt_bind_result($stmt, $id_cat, $name_cat); // Must do this
-                                //         while (mysqli_stmt_fetch($stmt)) {
-                                //             echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
-                                //         }
-                                //     }
-                                // }
+                                        mysqli_stmt_bind_result($stmt, $id_cat, $name_cat); // Must do this
+                                        while (mysqli_stmt_fetch($stmt)) {
+                                            echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
+                                        }
+                                    }
+                                }
                             ?>
                         </select>
                     </div>
