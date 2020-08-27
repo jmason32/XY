@@ -1,13 +1,5 @@
 <?php 
-<<<<<<< Updated upstream
-    // session_start();
-    require 'header.php';
-    // if (!$_SESSION['id']) {
-    //     header("Location: signup.php");
-    //     exit();
-    // }
-=======
-session_start();
+    session_start();
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
@@ -17,8 +9,7 @@ session_start();
         exit();
 
     }
->>>>>>> Stashed changes
-    
+
     // Re login after sign up 
     // else if ($_GET['error'] == 'successSignup'){
     //     $_SESSION['id'] = $_GET['id'];
