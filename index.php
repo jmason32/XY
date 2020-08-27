@@ -1,15 +1,17 @@
 <?php 
-    session_start();
+session_start();
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
     require 'header.php';
+    require 'includes/dbh.inc.php';
     if (!$_SESSION['id']) {
         header("Location: signup.php");
         exit();
 
     }
-
+    echo $_SESSION['id'];
+    
     // Re login after sign up 
     // else if ($_GET['error'] == 'successSignup'){
     //     $_SESSION['id'] = $_GET['id'];
@@ -101,30 +103,51 @@
                         - List all the businesses this user has made 
                         - Add a edit/delete button to the listing 
                     -->
+                    <h1>Mind yo Damn Bussiness</h1>
                     <table class="table-borders-light shadow-small">
                         <tbody>
                             <tr>
                                 <th class="bg-highlight color-white col-8">Brand</th>
         
                             </tr>
-                            <tr>
-                                <td class="bg-highlight">Apple</td>
-                                <td>iPhone</td>
-                                <td>iOS</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-highlight">Android</td>
-                                <td>Pixel</td>
-                                <td>Android</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-highlight">Nope</td>
-                                <td>Nope</td>
-                                <td>nOS</td>
-                                <td>Yes</td>
-                            </tr>
+                            <!-- 
+                                TODO :
+                                    - Create a query to get all of the business that this user owns
+                            -->
+                            <?php 
+                                session_start();
+                                $sql = "SELECT idbusiness, business_name FROM business WHERE idusers=?"; //use the ? as a placeholder 
+        
+                                // Initializes a statement and returns an object for use with mysqli_stmt_prepare
+                                $stmt = mysqli_stmt_init($mysqli);
+                                if (!mysqli_stmt_prepare($stmt, $sql)) // Prepare 
+                                {
+                                    header("Location: ../login.php?error=sqlerror1");
+                                    exit();
+                                }
+                                else 
+                                {
+                                    mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
+                                    if (mysqli_stmt_execute($stmt)){
+                                        mysqli_stmt_bind_result($stmt, $business_id, $business_name); // Must do this
+                                        while (mysqli_stmt_fetch($stmt)) {
+                                            //echo ($business_name);
+                                            //echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
+                                           echo '<tr><td>
+                                                    <div class="news-list-item">
+                                                        <a href="#">
+                                                            <img class="preload-image rounded-image shadow-medium" src="images/pictures/8s.jpg" data-src="images/pictures/8s.jpg" alt="img">
+                                                            <strong>'.($business_name).'</strong>
+                                                            <p> Whats god</p>
+                                                        </a>
+                                                        <span><i class="fas fa-clock"></i>30 Dec 2019 <a href="#" class="color-blue-dark">Gadgets</a></span>
+                                                    </div>    
+                                                </td></tr>';
+                                           // echo 'lit';
+                                        }
+                                    }
+                                }
+                            ?>
                         </tbody>
                     </table>
                     
