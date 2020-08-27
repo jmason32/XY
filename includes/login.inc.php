@@ -88,7 +88,7 @@ if(isset($_POST['login-submit']) )
                 // No valid user
                 else 
                 {
-                    header("Location: ../login.php?error=sqlerrror1");
+                    header("Location: ../login.php?error=sqlerrror2");
                     exit();
                 }
             }
