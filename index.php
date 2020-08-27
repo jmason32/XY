@@ -1,10 +1,75 @@
 <?php 
+<<<<<<< Updated upstream
     // session_start();
     require 'header.php';
     // if (!$_SESSION['id']) {
     //     header("Location: signup.php");
     //     exit();
     // }
+=======
+session_start();
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    require 'header.php';
+    if (!$_SESSION['id']) {
+        header("Location: signup.php");
+        exit();
+
+    }
+>>>>>>> Stashed changes
+    
+    // Re login after sign up 
+    // else if ($_GET['error'] == 'successSignup'){
+    //     $_SESSION['id'] = $_GET['id'];
+    //     $sql = "SELECT idusers, username FROM users WHERE idusers=?"; //use the ? as a placeholder 
+        
+    //     // Initializes a statement and returns an object for use with mysqli_stmt_prepare
+    //     $stmt = mysqli_stmt_init($mysqli);
+    //     if (!mysqli_stmt_prepare($stmt, $sql)) 
+    //     {
+    //         header("Location: ../login.php?error=sqlerror1");
+    //         exit();
+    //     }
+
+    //     // else 
+    //     // {
+    //     //     mysqli_stmt_bind_param($stmt, 's', $mysqli->insert_id);
+    //     //     if (mysqli_stmt_execute($stmt))
+    //     //     {
+    //     //         // Store Result
+    //     //         mysqli_stmt_store_result($stmt);
+    //     //         // Verify User
+    //     //         if (mysqli_stmt_num_rows($stmt) == 1)
+    //     //         {
+                    
+    //     //             mysqli_stmt_bind_result($stmt, $id, $username);
+    //     //             if(mysqli_stmt_fetch($stmt))
+    //     //             {
+                    
+    //     //                 $_SESSION["loggedin"] = true;
+    //     //                 $_SESSION["id"] = $id;
+    //     //                 $_SESSION["username"] = $username; 
+    //     //             }
+                    
+    //     //         }
+    //     //         // No valid user
+    //     //         else 
+    //     //         {
+    //     //             header("Location: ../login.php?error=sqlerrror2");
+    //     //             exit();
+    //     //         }
+    //     //     }
+    //     //     else 
+    //     //     {
+    //     //         header("Location: ../login.php?error=wrongsome");
+    //     //         exit();
+    //     //     }
+    //     //     mysqli_stmt_close($stmt);
+    //     // }
+
+    // }
+    
     
 ?>
 

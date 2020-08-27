@@ -1,11 +1,19 @@
 <?php 
     // session_start();
     require '../header.php';
+<<<<<<< Updated upstream
     // require '../includes/dbh.inc.php';
     // if (!$_SESSION['id']) {
     //     header("Location: signup.php");
     //     exit();
     // }
+=======
+    require '../includes/dbh.inc.php';
+    if (!$_SESSION['id']) {
+        header("Location: ../signup.php");
+        exit();
+    }
+>>>>>>> Stashed changes
     
 ?>
 
