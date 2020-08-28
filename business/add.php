@@ -10,6 +10,8 @@
 ?>
 
 <main>
+    
+
 
     <div id="page-transitions" class="page-build light-skin highlight-blue">
         <div class="decoration"></div>
@@ -59,6 +61,45 @@
                     </div>
                     
                     <div class="input-simple-1 textarea has-icon bottom-30"><strong>Required Field</strong><i class="fa fa-edit"></i><em class="color-highlight">Description</em> <textarea name='business_description' class="textarea-simple-1" placeholder="Expanding Text Area"></textarea></div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="my_camera"></div>
+                            <script language="JavaScript">
+                                Webcam.set({
+                                    width: 490,
+                                    height: 390,
+                                    image_format: 'jpeg',
+                                    jpeg_quality: 90
+                                });
+                            
+                                Webcam.attach( '#my_camera' );
+                            
+                                function take_snapshot() {
+                                    Webcam.snap( function(data_uri) {
+                                        $(".image-tag").val(data_uri);
+                                        document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                                    } );
+                                }
+                            </script>
+                            <br/>
+                            <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                            <input type="hidden" name="image" class="image-tag">
+                        </div>
+                        <div class="col-md-6">
+                            <div id="results">Your captured image will appear here...</div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <br/>
+                            
+                            <div>
+                                <input type = 'file' name="logo_photo">
+                            </div>
+
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                    
                     <button type='submit' name='new_business_submit' class="button bg-highlight button-full button-rounded button-s uppercase ultrabold shadow-medium">Submit</button>
                 </form>
                 <div class="clear"></div>
@@ -68,8 +109,27 @@
 
     </div>
 
+    <script language="JavaScript">
+    Webcam.set({
+        width: 490,
+        height: 390,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+  
+    Webcam.attach( '#my_camera' );
+  
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            $(".image-tag").val(data_uri);
+            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+        } );
+    }
+    </script>
+
 
 </main>
+
 
 <?php
     require 'footer.php';

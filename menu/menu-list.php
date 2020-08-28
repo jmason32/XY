@@ -6,7 +6,7 @@
 <div class="menu-page">
     <ul class="menu-list">
         <li id="menu-index">
-            <a href="index.html">
+            <a href='../index.php'>
                 <i class='fa fa-home color-green-dark'></i>
                 <span>Homepage</span>
                 <em>This is where it all Begins</em>
@@ -14,9 +14,9 @@
             </a>
         </li>  
         <li id="menu-components">
-            <a href="components.html">
+            <a href="business/all.php">
                 <i class='fa fa-cog color-yellow-dark'></i>
-                <span>Components</span>
+                <span>Da Businesses My Guy</span>
                 <em>Just a Copy and Paste Away</em>
                 <i class="fa fa-angle-right"></i>
             </a>
