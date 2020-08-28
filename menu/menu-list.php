@@ -22,9 +22,9 @@
             </a>
         </li>   
         <li id="menu-pages">
-            <a href="pages-list.html">
+            <a href="map/user-map.php">
                 <i class='fa fa-heart color-red-dark'></i>
-                <span>Site Pages</span>
+                <span>Issa a Map</span>
                 <em>Easy to Customize and Use</em>
                 <i class="fa fa-angle-right"></i>
             </a>
