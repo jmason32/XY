@@ -38,7 +38,7 @@
             </a>
         </li>      
         <li id="menu-contact">
-            <form action="includes/logout.inc.php">
+            <form action="<?php $_SERVER["DOCUMENT_ROOT"]?>/php/DMV/includes/logout.inc.php">
                 <button type='submit'>
                     <i class='fa fa-envelope color-blue-dark'></i>
                     <span>Logout</span>
