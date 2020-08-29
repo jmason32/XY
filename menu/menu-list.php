@@ -6,7 +6,7 @@
 <div class="menu-page">
     <ul class="menu-list">
         <li id="menu-index">
-            <a href="index.html">
+            <a href='<?php $_SERVER["DOCUMENT_ROOT"]?>/php/DMV/index.php'>
                 <i class='fa fa-home color-green-dark'></i>
                 <span>Homepage</span>
                 <em>This is where it all Begins</em>
@@ -14,17 +14,17 @@
             </a>
         </li>  
         <li id="menu-components">
-            <a href="components.html">
+            <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/php/DMV/business/all.php">
                 <i class='fa fa-cog color-yellow-dark'></i>
-                <span>Components</span>
+                <span>Da Businesses My Guy</span>
                 <em>Just a Copy and Paste Away</em>
                 <i class="fa fa-angle-right"></i>
             </a>
         </li>   
         <li id="menu-pages">
-            <a href="pages-list.html">
+            <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/php/DMV/map/user-map.php">
                 <i class='fa fa-heart color-red-dark'></i>
-                <span>Site Pages</span>
+                <span>Issa a Map</span>
                 <em>Easy to Customize and Use</em>
                 <i class="fa fa-angle-right"></i>
             </a>

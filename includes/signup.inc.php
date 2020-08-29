@@ -68,9 +68,9 @@ if(isset($_POST['signup-submit'])) {
                     mysqli_stmt_execute($stmt);
                     //Query user id and save in session
                     $_SESSION["loggedin"] = true;
-                    $_SESSION["id"] = $id;
+                    $_SESSION["id"] = $mysqli->insert_id;
                     $_SESSION["username"] = $username; 
-                    header("Location: ../index.php?error=success"); 
+                    header("Location: ../index.php?error=successSignup&id=".$mysqli->insert_id); 
                     exit();
                 }
             }

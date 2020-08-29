@@ -33,6 +33,7 @@
                 mysqli_stmt_bind_param($stmt, 'issss', $_SESSION['id'], $business_name, $business_address, $business_email, $business_desc);
                 
                 if (mysqli_stmt_execute($stmt)){
+                    // In the database, add a column that will state the status of the bussiness, pending, approved, denied, etc 
                     header("Location: ../index.php?error=success_business"); 
                     exit();
                 }

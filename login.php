@@ -1,5 +1,6 @@
 <?php 
     require 'header.php';
+    header("Access-Control-Allow-Origin: *");
 ?>
 <main>
     <div id="page-transitions" class="page-build light-skin highlight-blue">    
@@ -34,6 +35,7 @@
                         </div>
                         <button type='submit' name='login-submit' class="button bg-highlight button-full button-rounded button-s uppercase ultrabold shadow-medium">LOGIN</button>
                     </form>
+                    
                 </div>
 
                 </div>

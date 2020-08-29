@@ -1,5 +1,6 @@
 <?php 
 session_start();
+header("Access-Control-Allow-Origin: *");
 function debug_to_console($data) 
 {
     $output = $data;
@@ -49,7 +50,7 @@ if(isset($_POST['login-submit']) )
         // If this fails, the statement we made is not vaild to our database
         if (!mysqli_stmt_prepare($stmt, $sql)) 
         {
-            header("Location: ../login.php?error=sqlerror1");
+            header("Location: ../login.php?error=sqlerror1damned");
             exit();
         }
 

@@ -12,6 +12,6 @@ session_destroy();
 // Theres a bug, when you log, out from different places in the dir, the redirect to login.php breaks
 // Tried to use SITE_URL to fix 
 $site_url = SITE_URL;
-header("Location:  ".$site_url."/login.php");
+header("Location:  ../login.php");
 exit();
 ?>
