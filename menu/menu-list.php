@@ -29,14 +29,6 @@
                 <i class="fa fa-angle-right"></i>
             </a>
         </li>    
-        <li id="menu-media">
-            <a href="media.html">
-                <i class='fa fa-camera color-brown-light'></i>
-                <span>Media</span>
-                <em>Showcase your Projects with Style</em>
-                <i class="fa fa-angle-right"></i>
-            </a>
-        </li>      
         <li id="menu-contact">
             <form action="<?php $_SERVER["DOCUMENT_ROOT"]?>/php/DMV/includes/logout.inc.php">
                 <button type='submit'>
