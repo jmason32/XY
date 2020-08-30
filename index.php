@@ -82,7 +82,7 @@ session_start();
                                             //echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
                                            echo '<tr><td>
                                                     <div class="news-list-item">
-                                                        <a href="#">
+                                                        <a href="business/view.php?business_id='.($business_id).'">
                                                             <img class="preload-image rounded-image shadow-medium" src="images/pictures/8s.jpg" data-src="images/pictures/8s.jpg" alt="img">
                                                             <strong>'.($business_name).'</strong>
                                                             <p> Whats god</p>
