@@ -6,7 +6,7 @@ session_start();
     require 'header.php';
     require 'includes/dbh.inc.php';
     if (!$_SESSION['id']) {
-        header("Location: login.php");
+        header("Location: splash.php");
         exit();
 
     }
