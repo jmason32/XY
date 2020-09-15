@@ -28,7 +28,7 @@
             <div class="decoration decoration-margins top-30"></div>
             <div class="content">
                 
-                <form action='../includes/business.inc.php' method='POST'>
+                <form action='../includes/business.inc.php' method='POST' enctype="multipart/form-data">
                     <div class="input-simple-1 has-icon input-green bottom-30"><strong>Required Field</strong><em class="color-highlight">Business Name</em><i class="fa fa-user"></i><input name='business_name' type="text" placeholder="Jonh Doe"></div>
                     <div class="input-simple-1 has-icon input-blue bottom-30"><strong>Required Field</strong><em class="color-highlight">Address</em><i class="fa fa-envelope"></i><input name='business_address' type="text" placeholder="mail@domain.com"></div>				
                     <!-- Create a table in the database to populate the selection choices (business_category) -->
@@ -63,7 +63,7 @@
                     <div class="input-simple-1 textarea has-icon bottom-30"><strong>Required Field</strong><i class="fa fa-edit"></i><em class="color-highlight">Description</em> <textarea name='business_description' class="textarea-simple-1" placeholder="Expanding Text Area"></textarea></div>
                     
                     <div class="row">
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div id="my_camera"></div>
                             <script language="JavaScript">
                                 Webcam.set({
@@ -88,15 +88,13 @@
                         </div>
                         <div class="col-md-6">
                             <div id="results">Your captured image will appear here...</div>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <br/>
-                            
-                            <div>
-                                <input type = 'file' name="logo_photo">
-                            </div>
-
-                            <button class="btn btn-success">Submit</button>
+                        </div> -->
+                        <!-- TODO : Add option to upload multiple photos -->
+                        <div class="input-simple-1 has-icon input-green bottom-30">
+                            <strong>Required Field</strong>
+                            <em class="color-highlight">Business Photos</em>
+                            <i class="fa fa-user"></i>
+                            <input name='business_photo' type = 'file'>
                         </div>
                     </div>
                     

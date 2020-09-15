@@ -63,7 +63,7 @@ session_start();
                             -->
                             <?php 
                                 session_start();
-                                $sql = "SELECT idbusiness, business_name FROM business WHERE idusers=?"; //use the ? as a placeholder 
+                                $sql = "SELECT idbusiness, business_name, photo FROM business WHERE idusers=?"; //use the ? as a placeholder 
         
                                 // Initializes a statement and returns an object for use with mysqli_stmt_prepare
                                 $stmt = mysqli_stmt_init($mysqli);
@@ -76,17 +76,20 @@ session_start();
                                 {
                                     mysqli_stmt_bind_param($stmt, 'i', $_SESSION['id']);
                                     if (mysqli_stmt_execute($stmt)){
-                                        mysqli_stmt_bind_result($stmt, $business_id, $business_name); // Must do this
+                                        mysqli_stmt_bind_result($stmt, $business_id, $business_name, $business_photo); // Must do this
                                         while (mysqli_stmt_fetch($stmt)) {
-                                            //echo ($business_name);
-                                            //echo "<option value='".($id_cat)."'>".($name_cat)."</option>";
+                                            if ($business_photo == null){
+                                                $business_photo = 'pictures/8s.jpg';
+                                            }
                                            echo '<tr><td>
                                                     <div class="news-list-item">
-                                                        <a href="business/view.php?business_id='.($business_id).'">
-                                                            <img class="preload-image rounded-image shadow-medium" src="images/pictures/8s.jpg" data-src="images/pictures/8s.jpg" alt="img">
-                                                            <strong>'.($business_name).'</strong>
-                                                            <p> Whats god</p>
-                                                        </a>
+                                                        <form action="business/edit.php?id_business='.($business_id).'" method="POST">
+                                                            <a name="edit_business" onclick="this.parentNode.submit()">
+                                                                <img class="preload-image rounded-image shadow-medium" src="images/'.($business_photo).'" data-src="images/pictures/8s.jpg" alt="img">
+                                                                <strong>'.($business_name).'</strong>
+                                                                <p> Whats god</p>
+                                                            </a>
+                                                        </form>
                                                         <span><i class="fas fa-clock"></i>30 Dec 2019 <a href="#" class="color-blue-dark">Gadgets</a></span>
                                                     </div>    
                                                 </td></tr>';
